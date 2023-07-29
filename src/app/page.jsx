@@ -17,7 +17,7 @@ async function getData() {
     headers: {
       accept: "application/json",
       Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNGE5YjU2ZTgzMmJhMzU3Mjc4OThmMmYxNTQyYmJlZCIsInN1YiI6IjY0YzUyMjRlNDFhYWM0MGZiNzEzM2E5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C5BkGy4l24cLgskfwtKtLuUNjetcNUeVWJ5erG17Ygc",
+        process.env.API_READ_ACCESS_TOKEN,
     },
   };
   try {
