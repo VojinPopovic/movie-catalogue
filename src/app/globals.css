@@ -2,3 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.main_color{
+    background-color: #100F12;
+}
+
+.accent_color{
+    background-color: #BA00FC;
+}

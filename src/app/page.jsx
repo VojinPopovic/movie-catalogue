@@ -1,23 +1,10 @@
-import Image from "next/image";
-import Link from "next/link";
-
-// async function getData() {
-//   try {
-//     const data = await fetch(
-//       "https://api.themoviedb.org/3/movie/157336?api_key=24a9b56e832ba35727898f2f1542bbed&append_to_response=videos"
-//     );
-//     return data.json();
-//   } catch (err) {
-//     console.log(err);
-//   }
-// }
+import MovieCard from "@/components/reusable/MovieCard";
 async function getData() {
   const options = {
     method: "GET",
     headers: {
       accept: "application/json",
-      Authorization:
-        process.env.API_READ_ACCESS_TOKEN,
+      Authorization: process.env.API_READ_ACCESS_TOKEN,
     },
   };
   try {
@@ -35,15 +22,15 @@ export default async function Home() {
   const movies = await getData();
   console.log(movies.results);
   const content = movies.results.map((movie) => {
-    const link = "https://image.tmdb.org/t/p/original/";
-    return (
-      <Image
-        src={link + movie.poster_path}
-        alt=""
-        width={40}
-        height={40}
-      ></Image>
-    );
+    return <MovieCard movie={movie} />;
   });
-  return <>{content}</>;
+  return (
+    <>
+      <div className="w-full flex justify-center">
+        <div className="w-auto grid gap-5 lg:gap-10 sm:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
+          {content}
+        </div>
+      </div>
+    </>
+  );
 }
