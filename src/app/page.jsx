@@ -1,33 +1,57 @@
-import MovieCard from "@/components/reusable/MovieCard";
-async function getData() {
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: process.env.API_READ_ACCESS_TOKEN,
-    },
-  };
-  try {
-    const data = await fetch(
-      "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc",
-      options
-    );
-    return data.json();
-  } catch (error) {
-    console.log(error);
-  }
-}
+"use client";
 
-export default async function Home() {
-  const movies = await getData();
-  console.log(movies.results);
-  const content = movies.results.map((movie) => {
-    return <MovieCard movie={movie} />;
+import { useEffect, useState } from "react";
+
+import MovieCard from "@/components/reusable/reusable/MovieCard";
+export default function Home() {
+  const [searchType, setSearchType] = useState("popularity.desc");
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyNGE5YjU2ZTgzMmJhMzU3Mjc4OThmMmYxNTQyYmJlZCIsInN1YiI6IjY0YzUyMjRlNDFhYWM0MGZiNzEzM2E5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C5BkGy4l24cLgskfwtKtLuUNjetcNUeVWJ5erG17Ygc",
+      },
+    };
+
+    fetch(
+      `https://api.themoviedb.org/3/discover/movie?sort_by=${searchType}`,
+      options
+    )
+      .then((response) => response.json())
+      .then((response) => setData(response))
+      .catch((err) => console.error(err));
+  }, [searchType]);
+
+  function parameterChangeHandler(e) {
+    setSearchType(e.target.value);
+  }
+
+  let content = data?.results?.map((movie) => {
+    return <MovieCard key={movie.id} movie={movie} />;
   });
+
   return (
     <>
-      <div className="w-full flex justify-center">
-        <div className="w-auto grid gap-5 lg:gap-10 sm:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
+      <div className="w-full flex justify-center flex-col">
+        <div className="w-full h-[300px] bg-purple-200"></div>
+        <div className="my-10 flex justify-center">
+          <select
+            name="popular"
+            id=""
+            className="bg-transparent text-white border-2 border-white px-4 py-2"
+            onChange={parameterChangeHandler}
+          >
+            <option value="popularity.desc">Popularity</option>
+            <option value="revenue.desc">Revenue</option>
+            <option value="primary_release_date.desc">Release date</option>
+            <option value="vote_average.desc">Rating</option>
+          </select>
+        </div>
+        <div className="grid gap-5 lg:gap-10 sm:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
           {content}
         </div>
       </div>
