@@ -1,4 +1,4 @@
-export async function getData(searchType) {
+export async function getVoteData() {
   const options = {
     method: "GET",
     headers: {
@@ -8,7 +8,7 @@ export async function getData(searchType) {
   };
   try {
     const data = await fetch(
-      `https://api.themoviedb.org/3/discover/movie?sort_by=${searchType}`,
+      `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc`,
       options
     );
     return data.json();
