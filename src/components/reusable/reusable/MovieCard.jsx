@@ -7,7 +7,7 @@ export default function MovieCard({ movie }) {
   return (
     <>
       {movie.poster_path !== null && movie.poster_path !== undefined ? (
-        <div className="w-[320px] h-[450px] bg-[#151515] relative">
+        <div className="w-[280px] h-[400px] xs:w-[320px] xs:h-[450px] bg-[#151515] relative">
           <div className="w-full h-full overflow-hidden absolute">
             <Image
               className="w-full h-auto"
