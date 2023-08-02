@@ -22,6 +22,11 @@ export default function BasicSlider({ data }) {
           width={1920}
           height={960}
         ></Image>
+        <div className="absolute bottom-0 left-0 flex flex-col items-start ml-8 mb-8 gap-2 bg-[rgba(0,0,0,0.2)] px-6 py-3 rounded-[20px]">
+          <p className="text-white text-5xl">Popular</p>
+          <p className="text-white text-3xl">{item.title}</p>
+          <button className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]">About</button>
+        </div>
       </SwiperSlide>
     );
   });

@@ -17,7 +17,7 @@ export default function RenderCards({ dataList }) {
   return (
     <>
       <div className="w-full flex justify-center flex-col">
-        <div className="w-full h-[400px] bg-black">
+        <div className="w-full h-[400px] bg-black max-w-[1034px] mx-auto">
           <BasicSlider data={dataList.popularity.results}></BasicSlider>
         </div>
         <div className="my-10 flex justify-center">
