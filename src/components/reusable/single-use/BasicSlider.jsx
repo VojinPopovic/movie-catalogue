@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
+import Link from "next/link";
+import ImdbIcon from "../../../../public/imdbIcon.svg";
 
 // Import Swiper styles
 import "swiper/css";
@@ -15,7 +17,7 @@ export default function BasicSlider({ data }) {
   const content = data?.map((item) => {
     const link = "https://image.tmdb.org/t/p/original";
     return (
-      <SwiperSlide>
+      <SwiperSlide key={item.id}>
         <Image
           src={link + item.backdrop_path}
           alt=""
@@ -23,9 +25,28 @@ export default function BasicSlider({ data }) {
           height={960}
         ></Image>
         <div className="absolute bottom-0 left-0 flex flex-col items-start ml-8 mb-8 gap-2 bg-[rgba(0,0,0,0.2)] px-6 py-3 rounded-[20px]">
-          <p className="text-white text-5xl">Popular</p>
-          <p className="text-white text-3xl">{item.title}</p>
-          <button className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]">About</button>
+          <p className="text-white text-4xl">{item.title}</p>
+          <div className="flex w-full gap-2 items-center">
+            <Image
+              src={ImdbIcon}
+              width={10}
+              height={10}
+              alt=""
+              className="max-h-[20px] max-w-[30px]"
+            />
+            <p className="text-white text-base">
+              {item.vote_average.toString().length === 1
+                ? item.vote_average + ".0"
+                : item.vote_average}
+            </p>
+          </div>
+          <p className="text-white text-lg">{"Release date: " + item.release_date}</p>
+          <Link
+            href={`/about/${item.title}`}
+            className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]"
+          >
+            About
+          </Link>
         </div>
       </SwiperSlide>
     );

@@ -33,7 +33,7 @@ export default function RenderCards({ dataList }) {
             <option value="votes">Rating</option>
           </select>
         </div>
-        <div className="grid gap-5 lg:gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
+        <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
           {content}
         </div>
       </div>
