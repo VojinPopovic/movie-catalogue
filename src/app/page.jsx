@@ -3,7 +3,6 @@ import { getPopularityData } from "@/libs/movieSortByPopularity";
 import { getRevenueData } from "@/libs/movieSortByRevenue";
 import { getVoteData } from "@/libs/movieSortByVote";
 import { getReleaseData } from "@/libs/movieSortByRelease";
-import { Suspense } from "react";
 
 export default async function Home() {
   const popularityData = getPopularityData();

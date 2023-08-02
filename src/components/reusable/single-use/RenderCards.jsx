@@ -3,12 +3,12 @@
 import React from "react";
 import MovieCard from "../reusable/MovieCard";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import BasicSlider from "./BasicSlider";
 
 export default function RenderCards({ dataList }) {
-  const [filteredData, setFilteredData] = useState(dataList.popularity)
+  const [filteredData, setFilteredData] = useState(dataList.popularity);
   function dataPicker(e) {
-    setFilteredData(dataList[e.target.value])
+    setFilteredData(dataList[e.target.value]);
   }
 
   const content = filteredData.results.map((movie) => {
@@ -17,7 +17,9 @@ export default function RenderCards({ dataList }) {
   return (
     <>
       <div className="w-full flex justify-center flex-col">
-        <div className="w-full h-[300px] bg-purple-200"></div>
+        <div className="w-full h-auto">
+          <BasicSlider data={dataList.popularity.results}></BasicSlider>
+        </div>
         <div className="my-10 flex justify-center">
           <select
             name="popular"
