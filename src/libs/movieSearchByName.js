@@ -8,7 +8,7 @@ export async function getMovieBySearch(name, year) {
   };
   try {
     const data = await fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&primary_release_year=${year}`,
+      `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US`,
       options
     );
     return data.json();
