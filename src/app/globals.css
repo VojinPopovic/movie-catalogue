@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
-.main_color{
-    background-color: #100F12;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
 }
 
-.accent_color{
-    background-color: #BA00FC;
+.main_color {
+  background-color: #100f12;
+}
+
+.accent_color {
+  background-color: #ba00fc;
 }
 
 .mySwiper {
