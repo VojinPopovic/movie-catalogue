@@ -2,8 +2,9 @@
 
 import React from "react";
 import MovieCard from "../reusable/MovieCard";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import BasicSlider from "./BasicSlider";
+import About from "@/app/about/[id]/page";
 
 export default function RenderCards({ dataList }) {
   const [filteredData, setFilteredData] = useState(dataList.popularity);
@@ -24,7 +25,7 @@ export default function RenderCards({ dataList }) {
           <select
             name="popular"
             id=""
-            className="bg-transparent text-white border-2 border-white px-4 py-2"
+            className="bg-transparent text-white border-2 border-white rounded-lg px-4 py-2"
             onChange={dataPicker}
           >
             <option value="popularity">Popularity</option>

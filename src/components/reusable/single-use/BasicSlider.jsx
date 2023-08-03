@@ -39,7 +39,7 @@ export default function BasicSlider({ data }) {
           </div>
           <p className="text-white text-lg">{"Release date: " + item.release_date}</p>
           <Link
-            href={`/about/${item.title}`}
+            href={`/about/${item.title}&${item.id}`}
             className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]"
           >
             About
