@@ -4,16 +4,18 @@ import React from "react";
 import MovieCard from "../reusable/MovieCard";
 import { useState } from "react";
 import BasicSlider from "./BasicSlider";
-import About from "@/app/about/[id]/page";
 
 export default function RenderCards({ dataList }) {
   const [filteredData, setFilteredData] = useState(dataList.popularity);
+  const [dataFilter, setDatafilter] = useState("popularity");
+  console.log(dataList);
   function dataPicker(e) {
     setFilteredData(dataList[e.target.value]);
+    setDatafilter(e.target.value);
   }
 
   const content = filteredData.results.map((movie) => {
-    return <MovieCard key={movie.id} movie={movie} />;
+    return <MovieCard key={movie.id} movie={movie} dataFilter={dataFilter} />;
   });
   return (
     <>
