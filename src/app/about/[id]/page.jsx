@@ -4,6 +4,8 @@ import Image from "next/image";
 import FallbackImage from "../../../../public/fallbackImage.jpg";
 import MovieCard from "@/components/reusable/reusable/MovieCard";
 import { getPopularityData } from "@/libs/movieSortByPopularity";
+import GlassCard from "@/components/reusable/single-use/GlassCard";
+import { formatDate } from "@/libs/formatDate";
 
 export default async function About({ params }) {
   let matchingMovie = "";
@@ -26,7 +28,16 @@ export default async function About({ params }) {
 
   return (
     <div className="text-white max-w-[1034px] mx-auto">
-      <Image src={src} width={1920} height={1080} />
+      <div className="w-full h-full relative">
+        <Image src={src} width={1920} height={1080} alt="" />
+        <div className="flex absolute bottom-0 mb-4 px-3 w-full justify-center">
+          <div className="grid gap-5 grid-cols-[200px_200px_200px]">
+            <GlassCard prop={matchingMovie.title} />
+            <GlassCard prop={formatDate(matchingMovie.release_date)} />
+            <GlassCard prop={matchingMovie.vote_average} />
+          </div>
+        </div>
+      </div>
       <div className="w-full h-auto">
         <div>
           <p className="">Description</p>

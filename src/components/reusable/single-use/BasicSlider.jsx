@@ -1,8 +1,8 @@
-import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Link from "next/link";
 import ImdbIcon from "../../../../public/imdbIcon.svg";
+import { formatDate } from "@/libs/formatDate";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -37,7 +37,9 @@ export default function BasicSlider({ data }) {
                 : item.vote_average}
             </p>
           </div>
-          <p className="text-white text-lg">{"Release date: " + item.release_date}</p>
+          <p className="text-white text-lg">
+            {"Release date: " + formatDate(item.release_date)}
+          </p>
           <Link
             href={`/about/${item.title}&${item.id}`}
             className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]"
