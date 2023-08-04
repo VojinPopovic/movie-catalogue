@@ -30,8 +30,8 @@ export default async function About({ params }) {
     <div className="text-white max-w-[1034px] mx-auto">
       <div className="w-full h-full relative">
         <Image src={src} width={1920} height={1080} alt="" />
-        <div className="h-full xs:h-auto flex justify-center items-center absolute bottom-0 xs:justify-start xs:mb-4 px-3 w-full md:justify-center">
-          <div className="grid gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
+        <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
+          <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
             <GlassCard prop={matchingMovie.title} />
             <GlassCard prop={formatDate(matchingMovie.release_date)} />
             <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
@@ -39,12 +39,12 @@ export default async function About({ params }) {
         </div>
       </div>
       <div className="w-full h-auto">
-        <div>
-          <p className="">Description</p>
+        <div className="mx-2 content:mx-0">
+          <p className="text-[#BA00FC] my-4 text-2xl">Description</p>
           <p>{matchingMovie.overview}</p>
         </div>
         <div>
-          <p>Popular movies</p>
+          <p className="text-[#BA00FC] my-4 text-2xl mx-2 content:mx-0">Popular movies</p>
           <div className="w-full flex justify-center">
             <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
               {popularMovies.results.map((item) => {

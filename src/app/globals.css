@@ -24,6 +24,18 @@
     border-radius: 12px;
   }
 }
+@media (max-width: 640px) {
+  .glass-card {
+    backdrop-filter: blur(1px);
+    -webkit-backdrop-filter: blur(1px);
+  }
+}
+
+@media (max-width: 400px) {
+  .glass-card {
+    border-radius: 0;
+  }
+}
 
 .main_color {
   background-color: #100f12;
