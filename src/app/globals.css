@@ -12,6 +12,14 @@
   background: transparent;
 }
 
+.glass-card {
+  background: rgba(186, 0, 252, 0.06);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.6px);
+  -webkit-backdrop-filter: blur(5.6px);
+}
+
 .main_color {
   background-color: #100f12;
 }

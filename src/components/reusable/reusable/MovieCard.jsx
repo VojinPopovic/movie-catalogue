@@ -34,7 +34,7 @@ export default function MovieCard({ movie, dataFilter }) {
                   </p>
                 </div>
               ) : (
-                ""
+               movie.release_date 
               )}
               <Link
                 href={`/about/${movie.title}&${movie.id}`}
