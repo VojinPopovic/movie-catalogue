@@ -30,11 +30,11 @@ export default async function About({ params }) {
     <div className="text-white max-w-[1034px] mx-auto">
       <div className="w-full h-full relative">
         <Image src={src} width={1920} height={1080} alt="" />
-        <div className="flex absolute bottom-0 mb-4 px-3 w-full justify-center">
-          <div className="grid gap-5 grid-cols-[200px_200px_200px]">
+        <div className="h-full xs:h-auto flex justify-center items-center absolute bottom-0 xs:justify-start xs:mb-4 px-3 w-full md:justify-center">
+          <div className="grid gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
             <GlassCard prop={matchingMovie.title} />
             <GlassCard prop={formatDate(matchingMovie.release_date)} />
-            <GlassCard prop={matchingMovie.vote_average} />
+            <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
           </div>
         </div>
       </div>
