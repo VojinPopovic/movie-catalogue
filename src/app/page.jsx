@@ -1,4 +1,4 @@
-import RenderCards from "@/components/reusable/single-use/RenderCards";
+import RenderCards from "@/components/single-use/RenderCards";
 import { getPopularityData } from "@/libs/movieSortByPopularity";
 import { getRevenueData } from "@/libs/movieSortByRevenue";
 import { getVoteData } from "@/libs/movieSortByVote";
