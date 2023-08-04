@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import ImdbIcon from "../../../../public/imdbIcon.svg";
+import ImdbIcon from "../../../public/imdbIcon.svg";
 import Tilt from "react-parallax-tilt";
 
 export default function MovieCard({ movie, dataFilter }) {

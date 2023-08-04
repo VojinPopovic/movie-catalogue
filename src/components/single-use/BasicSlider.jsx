@@ -1,7 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Link from "next/link";
-import ImdbIcon from "../../../../public/imdbIcon.svg";
+import ImdbIcon from "../../../public/imdbIcon.svg";
 import { formatDate } from "@/libs/formatDate";
 
 import "swiper/css";

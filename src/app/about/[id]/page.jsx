@@ -2,7 +2,7 @@ import React from "react";
 import { getMovieBySearch } from "@/libs/movieSearchByName";
 import Image from "next/image";
 import FallbackImage from "../../../../public/fallbackImage.jpg";
-import MovieCard from "@/components/reusable/reusable/MovieCard";
+import MovieCard from "@/components/dsa/MovieCard";
 import { getPopularityData } from "@/libs/movieSortByPopularity";
 import GlassCard from "@/components/reusable/single-use/GlassCard";
 import { formatDate } from "@/libs/formatDate";
