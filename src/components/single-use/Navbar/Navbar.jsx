@@ -6,9 +6,13 @@ import { useState } from "react";
 import LogoIcon from "../../../../public/LogoIcon.svg";
 import SearchIcon from "../../../../public/SearchIcon.svg";
 import ProfileFallbackIcon from "../../../../public/profileFallbackIcon.svg";
+import { signIn, signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const session = useSession();
+
   let unorderedList = (
     <>
       <Link href="/about">About</Link>
@@ -24,13 +28,30 @@ export default function Navbar() {
           <Link href="/">
             <Image src={LogoIcon} width={120} height={50} alt=""></Image>
           </Link>
-          <button className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center">
-            Sign in
-          </button>
-          {/* <div className="flex gap-3">
-            <Image src={SearchIcon} width={30} height={30} alt=""></Image>
-            <Image src={ProfileFallbackIcon} width={50} height={50} alt=""></Image>
-          </div> */}
+          {session?.status === "authenticated" ? (
+            <div className="flex gap-3">
+              {/* <Image src={SearchIcon} width={30} height={30} alt=""></Image> */}
+              <div className="w-[50px] h-[50px] rounded-full overflow-hidden">
+                <Image
+                  src={session?.data.user.image}
+                  width={50}
+                  height={50}
+                  alt=""
+                ></Image>
+              </div>
+              <button
+                className="h-[50px] text-white"
+                onClick={signOut}
+              >Logout</button>
+            </div>
+          ) : (
+            <button
+              onClick={() => signIn("google")}
+              className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
+            >
+              Sign in
+            </button>
+          )}
         </div>
       </div>
       {isOpen ? (
