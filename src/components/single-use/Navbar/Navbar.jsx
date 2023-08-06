@@ -3,8 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import LogoIcon from "../../../../public/LogoIcon.svg";
-import SearchIcon from "../../../../public/SearchIcon.svg";
+import LogoIcon from "../../../../public/logoIcon.svg";
+import SearchIcon from "../../../../public/searchIcon.svg";
 import ProfileFallbackIcon from "../../../../public/profileFallbackIcon.svg";
 import { signIn, signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
