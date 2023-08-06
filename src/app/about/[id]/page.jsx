@@ -48,7 +48,7 @@ export default async function About({ params }) {
           <div className="w-full flex justify-center">
             <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
               {popularMovies.results.map((item) => {
-                return <MovieCard movie={item} />;
+                return <MovieCard key={item.id} movie={item} />;
               })}
             </div>
           </div>
