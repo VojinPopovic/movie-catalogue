@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import LogoIcon from "../../../../public/logoIcon.svg";
-import { signIn, signOut } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
 import ProfileModal from "../ProfileModal";
 
@@ -30,11 +30,9 @@ export default function Navbar() {
                   width={50}
                   height={50}
                   alt=""
+                  className="cursor-pointer"
                 ></Image>
               </div>
-              <button className="h-[50px] text-white" onClick={signOut}>
-                Logout
-              </button>
             </div>
           ) : (
             <button
