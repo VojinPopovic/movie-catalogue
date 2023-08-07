@@ -4,6 +4,14 @@ const { Schema, model, models } = mongoose;
 
 const reviewSchema = new Schema(
   {
+    moviename: {
+      type: String,
+      required: true,
+    },
+    review: {
+      type: String,
+      required: true,
+    },
     username: {
       type: String,
       required: true,

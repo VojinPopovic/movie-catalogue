@@ -6,15 +6,26 @@ import MovieCard from "@/components/reusable/MovieCard";
 import { getPopularityData } from "@/libs/movieSortByPopularity";
 import GlassCard from "@/components/single-use/GlassCard";
 import { formatDate } from "@/libs/formatDate";
+import { getReviewsData } from "@/libs/getReviews";
+import Review from "@/components/single-use/Review";
 
 export default async function About({ params }) {
   let matchingMovie = "";
   const link = "https://image.tmdb.org/t/p/original";
   const movieNameYear = params.id.split("%26");
-  const movies = await getMovieBySearch(
+  const moviesData = getMovieBySearch(movieNameYear[0].replaceAll("%20", " "));
+  const popularityData = getPopularityData();
+  const reviewsData = getReviewsData(
+    "name",
     movieNameYear[0].replaceAll("%20", " ")
   );
-  const popularMovies = await getPopularityData();
+
+  const [movies, popularMovies, reviews] = await Promise.all([
+    moviesData,
+    popularityData,
+    reviewsData,
+  ]);
+
   movies.results.forEach((item) => {
     if (movieNameYear[1] == item.id) {
       matchingMovie = item;
@@ -43,8 +54,14 @@ export default async function About({ params }) {
           <p className="text-[#BA00FC] my-4 text-2xl">Description</p>
           <p>{matchingMovie.overview}</p>
         </div>
+        <Review
+          reviews={reviews}
+          moviename={movieNameYear[0].replaceAll("%20", " ")}
+        />
         <div>
-          <p className="text-[#BA00FC] my-4 text-2xl mx-2 content:mx-0">Popular movies</p>
+          <p className="text-[#BA00FC] my-4 text-2xl mx-2 content:mx-0">
+            Popular movies
+          </p>
           <div className="w-full flex justify-center">
             <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
               {popularMovies.results.map((item) => {
