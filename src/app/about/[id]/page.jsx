@@ -15,10 +15,7 @@ export default async function About({ params }) {
   const movieNameYear = params.id.split("%26");
   const moviesData = getMovieBySearch(movieNameYear[0].replaceAll("%20", " "));
   const popularityData = getPopularityData();
-  const reviewsData = getReviewsData(
-    "name",
-    movieNameYear[0].replaceAll("%20", " ")
-  );
+  const reviewsData = getReviewsData("moviename", movieNameYear[0]);
 
   const [movies, popularMovies, reviews] = await Promise.all([
     moviesData,
@@ -31,7 +28,6 @@ export default async function About({ params }) {
       matchingMovie = item;
     }
   });
-  console.log(matchingMovie);
   const src =
     matchingMovie.backdrop_path !== null
       ? link + matchingMovie.backdrop_path

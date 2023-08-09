@@ -9,6 +9,7 @@ export default function Review({ reviews, moviename }) {
     e.preventDefault();
     postReview(e.target[0].value, moviename, session);
   }
+
   return (
     <div className="mx-2 content:mx-0">
       <p className="text-[#BA00FC] my-4 text-2xl">Reviews</p>
@@ -31,7 +32,7 @@ export default function Review({ reviews, moviename }) {
           </span>
         </button>
       </form>
-      {/* <p>{reviews ? console.log("success") : console.log(reviews)}</p> */}
+      <p>{reviews !== undefined ? console.log(reviews) : console.log(reviews)}</p>
     </div>
   );
 }
