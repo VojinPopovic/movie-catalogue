@@ -3,10 +3,11 @@ import { NextResponse } from "next/server";
 import Review from "@/models/Review";
 
 export async function GET(request) {
-  if (request.method === "GET" && request.body.type == "email") {
-    const url = new URL(request.url);
-    const email = url.searchParams.get("email");
+  const url = new URL(request.url);
+  const email = url.searchParams.get("email");
+  const moviename = url.searchParams.get("moviename");
 
+  if (email) {
     try {
       await connect();
       const reviews = await Review.find(email && { email });
@@ -14,23 +15,12 @@ export async function GET(request) {
     } catch (err) {
       return new NextResponse({ status: 500 });
     }
-  } else if (request.method === "GET" && request.body.type == "moviename") {
-    const url = new URL(request.url);
-    const moviename = url.searchParams.get("moviename");
-
+  } else if (moviename) {
     try {
       await connect();
       const reviews = await Review.find(moviename && { moviename });
       return new NextResponse(JSON.stringify(reviews), { status: 200 });
     } catch (err) {
-      return new NextResponse({ status: 500 });
-    }
-  } else {
-    try {
-      await connect();
-      const reviews = Review.find();
-      return new NextResponse(reviews, { status: 200 });
-    } catch (error) {
       return new NextResponse({ status: 500 });
     }
   }
