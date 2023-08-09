@@ -44,6 +44,14 @@
   background-color: #ba00fc;
 }
 
+.main_text_color {
+  color: #100f12;
+}
+
+.accent_text_color {
+  color: #ba00fc;
+}
+
 .mySwiper {
   width: 100%;
   height: 100%;

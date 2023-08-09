@@ -8,7 +8,6 @@ import BasicSlider from "./BasicSlider";
 export default function RenderCards({ dataList }) {
   const [filteredData, setFilteredData] = useState(dataList.popularity);
   const [dataFilter, setDatafilter] = useState("popularity");
-  console.log(dataList);
   function dataPicker(e) {
     setFilteredData(dataList[e.target.value]);
     setDatafilter(e.target.value);

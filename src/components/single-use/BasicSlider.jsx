@@ -41,7 +41,7 @@ export default function BasicSlider({ data }) {
             {"Release date: " + formatDate(item.release_date)}
           </p>
           <Link
-            href={`/about/${item.title}&${item.id}`}
+            href={`/about/${item.title}+${item.id}`}
             className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]"
           >
             About
