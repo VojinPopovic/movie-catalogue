@@ -12,7 +12,7 @@ import Review from "@/components/single-use/Review";
 export default async function About({ params }) {
   let matchingMovie = "";
   const link = "https://image.tmdb.org/t/p/original";
-  const movieNameYear = params.id.split("%26");
+  const movieNameYear = params.id.split("%2B");
   const moviesData = getMovieBySearch(movieNameYear[0].replaceAll("%20", " "));
   const popularityData = getPopularityData();
   const reviewsData = getReviewsData("moviename", movieNameYear[0]);

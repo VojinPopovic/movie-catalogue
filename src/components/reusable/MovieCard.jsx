@@ -37,7 +37,7 @@ export default function MovieCard({ movie, dataFilter }) {
                movie.release_date 
               )}
               <Link
-                href={`/about/${movie.title}&${movie.id}`}
+                href={`/about/${movie.title}+${movie.id}`}
                 className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
               >
                 About
