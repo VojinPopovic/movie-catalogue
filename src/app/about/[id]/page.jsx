@@ -14,15 +14,12 @@ export default async function About({ params }) {
   const movieNameYear = params.id.split("%2B");
   const moviesData = getMovieBySearch(movieNameYear[0].replaceAll("%20", " "));
   const popularityData = getPopularityData();
-  const reviewsData = getReviewsData("moviename", movieNameYear[0]);
+  const reviews = await getReviewsData("moviename", movieNameYear[0]);
 
-  const [movies, popularMovies, reviews] = await Promise.all([
+  const [movies, popularMovies] = await Promise.all([
     moviesData,
     popularityData,
-    reviewsData,
   ]);
-
-  console.log(reviews);
 
   movies.results.forEach((item) => {
     if (movieNameYear[1] == item.id) {
@@ -34,7 +31,6 @@ export default async function About({ params }) {
       ? link + matchingMovie.backdrop_path
       : FallbackImage;
 
-
   return (
     <div className="text-white max-w-[1034px] mx-auto">
       <div className="w-full h-full relative">
@@ -42,7 +38,7 @@ export default async function About({ params }) {
         <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
           <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
             <GlassCard prop={matchingMovie.title} />
-            <GlassCard date={matchingMovie.release_date}/>
+            <GlassCard date={matchingMovie.release_date} />
             <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
           </div>
         </div>
