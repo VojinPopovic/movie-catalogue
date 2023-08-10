@@ -7,12 +7,12 @@ import { useRouter } from "next/navigation";
 
 export default function Review({ reviews, moviename }) {
   const session = useSession();
-  const router = useRouter()
+  const router = useRouter();
   function submitHandler(e) {
     e.preventDefault();
     postReview(e.target[0].value, moviename, session);
-    e.target.reset()
-    router.refresh()
+    e.target.reset();
+    router.refresh();
   }
 
   return (

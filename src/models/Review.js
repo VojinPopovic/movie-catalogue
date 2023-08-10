@@ -8,6 +8,10 @@ const reviewSchema = new Schema(
       type: String,
       required: true,
     },
+    movieid: {
+      type: String,
+      required: true,
+    },
     review: {
       type: String,
       required: true,

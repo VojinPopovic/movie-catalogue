@@ -1,6 +1,6 @@
 export async function postReview(review, moviename, session) {
   try {
-    await fetch(`http://localhost:3000/api/reviews`, {
+    await fetch(`https://popular-movie-catalogue.vercel.app/api/reviews`, {
       method: "POST",
       body: JSON.stringify({
         moviename,
