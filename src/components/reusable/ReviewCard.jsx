@@ -11,7 +11,7 @@ export default function ReviewCard({ review }) {
   const session = useSession();
   async function deleteReviewHandler() {
     try {
-      await fetch(`https://popular-movie-catalogue.vercel.app/api/reviews/${review._id}`, {
+      await fetch(`/api/reviews/${review._id}`, {
         method: "DELETE",
       });
       router.refresh();
