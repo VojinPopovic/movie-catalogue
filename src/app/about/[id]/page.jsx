@@ -21,11 +21,13 @@ export default async function About({ params }) {
     popularityData,
   ]);
 
-  movies.results.forEach((item) => {
-    if (movieNameYear[1] == item.id) {
-      matchingMovie = item;
-    }
-  });
+  movies
+    ? movies.results.forEach((item) => {
+        if (movieNameYear[1] == item.id) {
+          matchingMovie = item;
+        }
+      })
+    : "";
   const src =
     matchingMovie.backdrop_path !== null
       ? link + matchingMovie.backdrop_path
