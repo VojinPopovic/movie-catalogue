@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const { Schema, model, models } = mongoose;
 
-const reviewSchema = new Schema(
+const reviewsSchema = new Schema(
   {
     moviename: {
       type: String,
@@ -32,5 +32,5 @@ const reviewSchema = new Schema(
   { timestamps: true }
 );
 
-const Review = models.Review || model("Review", reviewSchema);
-export default Review;
+const Reviews = models.Reviews || model("Reviews", reviewsSchema);
+export default Reviews;

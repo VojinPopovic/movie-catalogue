@@ -55,6 +55,7 @@ export default async function About({ params }) {
         <Review
           reviews={reviews}
           moviename={movieNameYear[0].replaceAll("%20", " ")}
+          movieid={matchingMovie.id}
         />
         <div>
           <p className="text-[#BA00FC] my-4 text-2xl mx-2 content:mx-0">

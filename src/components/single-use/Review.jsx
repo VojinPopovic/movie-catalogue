@@ -5,12 +5,12 @@ import { postReview } from "@/libs/postReview";
 import ReviewCard from "../reusable/ReviewCard";
 import { useRouter } from "next/navigation";
 
-export default function Review({ reviews, moviename }) {
+export default function Review({ reviews, moviename, movieid }) {
   const session = useSession();
   const router = useRouter();
   function submitHandler(e) {
     e.preventDefault();
-    postReview(e.target[0].value, moviename, session);
+    postReview(e.target[0].value, moviename, movieid, session);
     e.target.reset();
     router.refresh();
   }
@@ -37,11 +37,11 @@ export default function Review({ reviews, moviename }) {
         </button>
       </form>
       <p className="mt-4 mb-2">Recent reviews from other users</p>
-      {/* {reviews
+      {reviews
         ? reviews.map((review) => {
             return <ReviewCard key={review._id} review={review}></ReviewCard>;
           })
-        : ""} */}
+        : ""}
     </div>
   );
 }
