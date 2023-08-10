@@ -4,7 +4,7 @@ export async function getReviewsData(queryType, queryValue) {
       `https://popular-movie-catalogue.vercel.app/api/reviews?${queryType}=${queryValue}`,
       { cache: "no-store" }
     );
-    return data.json();
+    return data.text();
   } catch (error) {
     console.log("erroro");
   }
