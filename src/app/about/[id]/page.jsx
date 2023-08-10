@@ -35,7 +35,7 @@ export default async function About({ params }) {
       ? link + matchingMovie.backdrop_path
       : FallbackImage;
 
-  const date = formatDate(matchingMovie.release_date);
+  let date = formatDate(matchingMovie.release_date);
 
   return (
     <div className="text-white max-w-[1034px] mx-auto">
