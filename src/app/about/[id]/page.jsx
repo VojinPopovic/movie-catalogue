@@ -23,7 +23,7 @@ export default async function About({ params }) {
     reviewsData,
   ]);
 
-  console.log(reviews)
+  console.log(reviews);
 
   movies.results.forEach((item) => {
     if (movieNameYear[1] == item.id) {
@@ -42,7 +42,7 @@ export default async function About({ params }) {
         <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
           <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
             <GlassCard prop={matchingMovie.title} />
-            <GlassCard prop={formatDate(matchingMovie.release_date)} />
+            <GlassCard prop={() => formatDate(matchingMovie.release_date)} />
             <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
           </div>
         </div>
