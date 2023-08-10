@@ -5,7 +5,6 @@ import FallbackImage from "../../../../public/fallbackImage.jpg";
 import MovieCard from "@/components/reusable/MovieCard";
 import { getPopularityData } from "@/libs/movieSortByPopularity";
 import GlassCard from "@/components/single-use/GlassCard";
-import { formatDate } from "@/libs/formatDate";
 import { getReviewsData } from "@/libs/getReviews";
 import Review from "@/components/single-use/Review";
 
@@ -35,7 +34,6 @@ export default async function About({ params }) {
       ? link + matchingMovie.backdrop_path
       : FallbackImage;
 
-  let date = formatDate(matchingMovie.release_date);
 
   return (
     <div className="text-white max-w-[1034px] mx-auto">
@@ -44,7 +42,7 @@ export default async function About({ params }) {
         <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
           <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
             <GlassCard prop={matchingMovie.title} />
-            <GlassCard prop={date} />
+            <GlassCard date={matchingMovie.release_date}/>
             <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
           </div>
         </div>
