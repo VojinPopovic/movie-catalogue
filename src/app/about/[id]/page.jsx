@@ -15,13 +15,15 @@ export default async function About({ params }) {
   const movieNameYear = params.id.split("%2B");
   const moviesData = getMovieBySearch(movieNameYear[0].replaceAll("%20", " "));
   const popularityData = getPopularityData();
-  const reviewsData = getReviewsData("moviename", movieNameYear[0]);
+  const reviewsData = getReviewsData("moviename", decodeURIComponent(movieNameYear[0]));
 
   const [movies, popularMovies, reviews] = await Promise.all([
     moviesData,
     popularityData,
     reviewsData,
   ]);
+
+  console.log(typeof reviews)
 
   movies.results.forEach((item) => {
     if (movieNameYear[1] == item.id) {

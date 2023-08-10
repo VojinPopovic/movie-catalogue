@@ -7,22 +7,22 @@ export async function GET(request) {
   const email = url.searchParams.get("email");
   const moviename = url.searchParams.get("moviename");
 
-  if (email) {
-    try {
-      await connect();
-      const reviews = await Review.find(email && { email });
-      return new NextResponse(JSON.stringify(reviews), { status: 200 });
-    } catch (err) {
-      return new NextResponse({ status: 500 });
+  try {
+    await connect();
+
+    let reviews;
+    if (email) {
+      reviews = await Review.find({ email });
+    } else if (moviename) {
+      reviews = await Review.find({ moviename });
+    } else {
+      return new NextResponse("Invalid parameters", { status: 400 });
     }
-  } else if (moviename) {
-    try {
-      await connect();
-      const reviews = await Review.find(moviename && { moviename });
-      return new NextResponse(JSON.stringify(reviews), { status: 200 });
-    } catch (err) {
-      return new NextResponse({ status: 500 });
-    }
+
+    return new NextResponse(JSON.stringify(reviews), { status: 200 });
+  } catch (err) {
+    console.error("Error:", err);
+    return new NextResponse("Internal Server Error", { status: 500 });
   }
 }
 
