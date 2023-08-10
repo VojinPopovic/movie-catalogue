@@ -33,7 +33,7 @@ export default async function About({ params }) {
 
   return (
     <>
-      {reviews ? (
+      {matchingMovie !== "" ? (
         <div className="text-white max-w-[1034px] mx-auto">
           <div className="w-full h-full relative">
             <Image src={src} width={1920} height={1080} alt="" />
