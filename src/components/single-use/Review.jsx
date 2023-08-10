@@ -37,11 +37,11 @@ export default function Review({ reviews, moviename }) {
         </button>
       </form>
       <p className="mt-4 mb-2">Recent reviews from other users</p>
-      {reviews
+      {/* {reviews
         ? reviews.map((review) => {
             return <ReviewCard key={review._id} review={review}></ReviewCard>;
           })
-        : ""}
+        : ""} */}
     </div>
   );
 }

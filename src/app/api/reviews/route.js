@@ -32,7 +32,14 @@ export async function POST(request) {
   try {
     await connect();
     await newReview.save();
-    return new NextResponse("post has been created", body, { status: 200 });
+    return new NextResponse("post has been created", body, {
+      status: 200,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+        "Access-Control-Allow-Headers": "Content-Type, Authorization",
+      },
+    });
   } catch (err) {
     console.log(err);
     return new NextResponse("Database Error", { status: 500 });

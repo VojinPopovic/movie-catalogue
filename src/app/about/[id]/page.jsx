@@ -23,7 +23,7 @@ export default async function About({ params }) {
     reviewsData,
   ]);
 
-  console.log(reviews);
+  console.log(reviews)
 
   movies.results.forEach((item) => {
     if (movieNameYear[1] == item.id) {
