@@ -14,6 +14,7 @@ export default function AboutPageClient({
   movieNameYear,
 }) {
   const [matchingMovie, setMatchingMovie] = useState("");
+  console.log(matchingMovie)
 
   const link = "https://image.tmdb.org/t/p/original";
   const src =
