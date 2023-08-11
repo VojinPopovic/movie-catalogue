@@ -33,6 +33,7 @@ export default async function About({ params }) {
       ? link + matchingMovie.backdrop_path
       : FallbackImage;
 
+  console.log(movies, matchingMovie);
   return (
     <>
       {matchingMovie !== "" ? (
