@@ -8,14 +8,14 @@ import BasicSlider from "./BasicSlider";
 export default function RenderCards({ dataList }) {
   const [filteredData, setFilteredData] = useState(dataList.popularity);
   const [dataFilter, setDatafilter] = useState("popularity");
-  // function dataPicker(e) {
-  //   setFilteredData(dataList[e.target.value]);
-  //   setDatafilter(e.target.value);
-  // }
+  function dataPicker(e) {
+    setFilteredData(dataList[e.target.value]);
+    setDatafilter(e.target.value);
+  }
 
-  // const content = filteredData.results.map((movie) => {
-  //   return <MovieCard key={movie.id} movie={movie} dataFilter={dataFilter} />;
-  // });
+  const content = filteredData.results.map((movie) => {
+    return <MovieCard key={movie.id} movie={movie} dataFilter={dataFilter} />;
+  });
   return (
     <>
       <div className="w-full flex justify-center flex-col">
@@ -27,7 +27,7 @@ export default function RenderCards({ dataList }) {
             name="popular"
             id=""
             className="bg-transparent text-white border-2 border-white rounded-lg px-4 py-2"
-            // onChange={dataPicker}
+            onChange={dataPicker}
           >
             <option value="popularity">Popularity</option>
             <option value="revenue">Revenue</option>
@@ -36,7 +36,7 @@ export default function RenderCards({ dataList }) {
           </select>
         </div>
         <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
-          {/* {content} */}
+          {content}
         </div>
       </div>
     </>
