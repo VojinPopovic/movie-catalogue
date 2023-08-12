@@ -17,6 +17,7 @@ export default function BasicSlider({ data }) {
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => {
     setDomLoaded(true);
+    console.log("caocaocoaocaocoaoc")
   },[data]);
 
   const content = data?.map((item) => {
