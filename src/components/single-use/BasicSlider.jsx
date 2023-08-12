@@ -52,7 +52,7 @@ export default function BasicSlider({ data }) {
   });
   return (
     <>
-      {typeof window !== undefined ? (
+      {typeof window != undefined ? (
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -69,7 +69,7 @@ export default function BasicSlider({ data }) {
           {content}
         </Swiper>
       ) : (
-        "loading"
+        <p>"loading"</p>
       )}
     </>
   );
