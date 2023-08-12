@@ -1,8 +1,11 @@
+"use client";
+
 import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import Link from "next/link";
 import ImdbIcon from "../../../public/imdbIcon.svg";
 import { formatDate } from "@/libs/formatDate";
+import { useEffect, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -11,6 +14,11 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default function BasicSlider({ data }) {
+  const [domLoaded, setDomLoaded] = useState(false);
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
+
   const content = data?.map((item) => {
     const link = "https://image.tmdb.org/t/p/original";
     return (
@@ -52,21 +60,25 @@ export default function BasicSlider({ data }) {
   });
   return (
     <>
-      <Swiper
-        spaceBetween={30}
-        centeredSlides={true}
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false,
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Autoplay, Pagination, Navigation]}
-        className="mySwiper"
-      >
-        {content}
-      </Swiper>
+      {domLoaded ? (
+        <Swiper
+          spaceBetween={30}
+          centeredSlides={true}
+          autoplay={{
+            delay: 5000,
+            disableOnInteraction: false,
+          }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Autoplay, Pagination, Navigation]}
+          className="mySwiper"
+        >
+          {content}
+        </Swiper>
+      ) : (
+        "loading"
+      )}
     </>
   );
 }
