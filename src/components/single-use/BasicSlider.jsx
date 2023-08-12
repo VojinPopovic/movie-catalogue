@@ -17,7 +17,7 @@ export default function BasicSlider({ data }) {
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => {
     setDomLoaded(true);
-  });
+  },[domLoaded]);
 
   const content = data?.map((item) => {
     const link = "https://image.tmdb.org/t/p/original";
