@@ -24,6 +24,7 @@ export default function AboutPageClient({
 
   useEffect(() => {
     movies.forEach((item) => {
+      console.log(item.id)
       if (movieNameYear[1] == item.id) {
         setMatchingMovie(item);
       }
@@ -32,7 +33,7 @@ export default function AboutPageClient({
 
   return (
     <>
-      {movies ? (
+      {matchingMovie !== "" ? (
         <div className="text-white max-w-[1034px] mx-auto">
           <div className="w-full h-full relative">
             <Image src={src} width={1920} height={1080} alt="" />
