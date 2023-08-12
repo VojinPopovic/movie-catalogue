@@ -11,6 +11,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default function BasicSlider({ data }) {
+
   const content = data?.map((item) => {
     const link = "https://image.tmdb.org/t/p/original";
     return (
@@ -52,7 +53,7 @@ export default function BasicSlider({ data }) {
   });
   return (
     <>
-      {typeof window != undefined ? (
+      {data ? (
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
@@ -69,7 +70,7 @@ export default function BasicSlider({ data }) {
           {content}
         </Swiper>
       ) : (
-        <p>loading</p>
+        <div>"loading"</div>
       )}
     </>
   );
