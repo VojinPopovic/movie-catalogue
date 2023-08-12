@@ -22,7 +22,7 @@ export default function ReviewCard({ review }) {
 
   return (
     <div className="relative border-white border-2 rounded-lg p-4 mb-3">
-      <Link href={`/profile/${review.username}`}>
+      {/* <Link href={`/profile/${review.username}`}> */}
         <div className="flex items-center gap-3">
           <Image
             className="rounded-full"
@@ -38,7 +38,7 @@ export default function ReviewCard({ review }) {
             {review.username}
           </p>
         </div>
-      </Link>
+      {/* </Link> */}
       <p className="mt-2">{review.review}</p>
       {session?.data?.user?.name === review.username ? (
         <Image
