@@ -17,7 +17,7 @@ export default function BasicSlider({ data }) {
   const [domLoaded, setDomLoaded] = useState(false);
   useEffect(() => {
     setDomLoaded(true);
-  }, []);
+  });
 
   const content = data?.map((item) => {
     const link = "https://image.tmdb.org/t/p/original";
@@ -58,9 +58,10 @@ export default function BasicSlider({ data }) {
       </SwiperSlide>
     );
   });
+  console.log(domLoaded, data)
   return (
     <>
-      {!(domLoaded && data) ? (
+      {(domLoaded && data) ? (
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
