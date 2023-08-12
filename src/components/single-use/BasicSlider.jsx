@@ -69,7 +69,7 @@ export default function BasicSlider({ data }) {
           {content}
         </Swiper>
       ) : (
-        <p>"loading"</p>
+        <p>loading</p>
       )}
     </>
   );
