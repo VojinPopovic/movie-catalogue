@@ -5,15 +5,11 @@ import { getReviewsData } from "@/libs/getReviews";
 import AboutPageClient from "@/components/single-use/AboutPageClient";
 
 export default async function About({ params }) {
-  const moviesData = getMovieBySearch(params.id.split("%2B")[0].replaceAll("%20", " "));
-  const popularityData = getPopularityData();
+  const movies = await getMovieBySearch(
+    params.id.split("%2B")[0].replaceAll("%20", " ")
+  );
+  const popularMovies = await getPopularityData();
   const reviews = await getReviewsData("moviename", params.id.split("%2B")[0]);
-
-  const [movies, popularMovies] = await Promise.all([
-    moviesData,
-    popularityData,
-  ]);
-
 
   return (
     <>
