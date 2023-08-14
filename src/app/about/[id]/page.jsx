@@ -14,6 +14,7 @@ export default async function About({ params }) {
     popularityData,
   ]);
 
+
   return (
     <>
       <AboutPageClient
