@@ -70,7 +70,7 @@ export default function AboutPageClient({
           </div>
         </div>
       ) : (
-        ""
+       <p>Loading...</p> 
       )}
     </>
   );
