@@ -23,13 +23,12 @@ export default function AboutPageClient({
       : FallbackImage;
 
   useEffect(() => {
-    movies.forEach((item) => {
-      console.log(item.id)
-      if (movieNameYear[1] == item.id) {
-        setMatchingMovie(item);
+    movies.forEach((movie) => {
+      if (movieNameYear[1] == movie.id) {
+        setMatchingMovie(movie);
       }
     });
-  }, [movies]);
+  }, [matchingMovie]);
 
   return (
     <>
@@ -70,7 +69,7 @@ export default function AboutPageClient({
           </div>
         </div>
       ) : (
-       <p>Loading...</p> 
+        <p>Loading...</p>
       )}
     </>
   );
