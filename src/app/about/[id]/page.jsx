@@ -33,7 +33,8 @@ export default async function About({ params }) {
 
   return (
     <>
-      <div className="text-white max-w-[1034px] mx-auto">
+    <p className="text-white">{movies.results[0].title}</p>
+      {/* <div className="text-white max-w-[1034px] mx-auto">
         <div className="w-full h-full relative">
           <Image
             src={matchingMovie.backdrop_path !== null ? src : FallbackImage}
@@ -72,7 +73,7 @@ export default async function About({ params }) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
