@@ -43,9 +43,9 @@ export default async function About({ params }) {
           />
           <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
             <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
-              <GlassCard prop={matchingMovie.title} />
-              <GlassCard date={matchingMovie.release_date} />
-              <GlassCard prop={"Rating: " + matchingMovie.vote_average} />
+              <GlassCard prop={movies.results[0].title} />
+              <GlassCard date={movies.results[0].release_date} />
+              <GlassCard prop={"Rating: " + movies.results[0].vote_average} />
             </div>
           </div>
         </div>
