@@ -17,10 +17,10 @@ export default async function About({ params }) {
   let src = "";
   const link = "https://image.tmdb.org/t/p/original";
 
-  const [popularMovies, reviews, movies] = await Promise.all([
+  const [movies, popularMovies, reviews] = await Promise.all([
+    moviesData,
     popularMoviesData,
     reviewsData,
-    moviesData,
   ]);
   if (movies) {
     movies.results.forEach((movie) => {
