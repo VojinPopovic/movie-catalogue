@@ -9,27 +9,28 @@ import GlassCard from "@/components/single-use/GlassCard";
 import MovieCard from "@/components/reusable/MovieCard";
 
 export default async function About({ params }) {
-  const popularMoviesData = getPopularityData();
-  const reviewsData = getReviewsData("moviename", params.id.split("%2B")[0]);
-  const moviesData = getMovieBySearch(params.id.split("%2B")[0]);
-  const movieNameAndId = params.id.split("%2B");
-  let matchingMovie = "";
-  let src = "";
-  const link = "https://image.tmdb.org/t/p/original";
+  // const popularMoviesData = getPopularityData();
+  // const reviewsData = getReviewsData("moviename", params.id.split("%2B")[0]);
+  // const moviesData = getMovieBySearch(params.id.split("%2B")[0]);
+  // const movieNameAndId = params.id.split("%2B");
+  // let matchingMovie = "";
+  // let src = "";
+  // const link = "https://image.tmdb.org/t/p/original";
 
-  const [movies, popularMovies, reviews] = await Promise.all([
-    moviesData,
-    popularMoviesData,
-    reviewsData,
-  ]);
-  if (movies) {
-    movies.results.forEach((movie) => {
-      if (movieNameAndId[1] == movie.id) {
-        matchingMovie = movie;
-        src = link + matchingMovie.backdrop_path;
-      }
-    });
-  }
+  // const [movies, popularMovies, reviews] = await Promise.all([
+  //   moviesData,
+  //   popularMoviesData,
+  //   reviewsData,
+  // ]);
+  // if (movies) {
+  //   movies.results.forEach((movie) => {
+  //     if (movieNameAndId[1] == movie.id) {
+  //       matchingMovie = movie;
+  //       src = link + matchingMovie.backdrop_path;
+  //     }
+  //   });
+  // }
+  const movies = await getMovieBySearch(params.id.split("%2B")[0])
 
   return (
     <>
