@@ -6,11 +6,13 @@ export async function getMovieBySearch(name) {
       Authorization: process.env.API_READ_ACCESS_TOKEN,
     },
   };
-  fetch(
-    `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US&page=1`,
-    options
-  )
-    .then((response) => response.json())
-    .then((response) => console.log(response))
-    .catch((err) => console.error(err));
+  try {
+    const data = await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${name}&include_adult=false&language=en-US`,
+      options
+    );
+    return data.json();
+  } catch (error) {
+    console.log(error);
+  }
 }
