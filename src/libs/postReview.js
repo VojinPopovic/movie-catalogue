@@ -3,7 +3,9 @@ export async function postReview(review, moviename, movieid, session) {
     await fetch(`/api/reviews`, {
       method: "POST",
       body: JSON.stringify({
-        moviename,
+        moviename: moviename.includes("%3A")
+          ? moviename.replaceAll("%3A", ":")
+          : moviename,
         review,
         movieid,
         username: session.data.user.name,
