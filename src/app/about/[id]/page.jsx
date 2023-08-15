@@ -35,7 +35,7 @@ export default async function About({ params }) {
   return (
     <>
     <p className="text-white">{movies.results[0].title}</p>
-    <p className="text-white">{params?.id}</p>
+    <p className="text-white">{params?.id.split("%2B")[0]}</p>
       {/* <div className="text-white max-w-[1034px] mx-auto">
         <div className="w-full h-full relative">
           <Image
