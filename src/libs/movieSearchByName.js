@@ -1,4 +1,4 @@
-export async function getMovieBySearch(name, year) {
+export async function getMovieBySearch(name) {
   const options = {
     method: "GET",
     headers: {
