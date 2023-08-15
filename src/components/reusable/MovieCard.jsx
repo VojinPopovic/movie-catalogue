@@ -7,6 +7,7 @@ import Tilt from "react-parallax-tilt";
 
 export default function MovieCard({ movie, dataFilter }) {
   const link = "https://image.tmdb.org/t/p/w500";
+  const encoded = encodeURIComponent("+");
   return (
     <>
       {movie.poster_path !== null && movie.poster_path !== undefined ? (
@@ -34,10 +35,10 @@ export default function MovieCard({ movie, dataFilter }) {
                   </p>
                 </div>
               ) : (
-               movie.release_date 
+                movie.release_date
               )}
               <Link
-                href={`/about/${movie.title}+${movie.id}`}
+                href={`/about/${movie.title}${encoded}${movie.id}`}
                 className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
               >
                 About
