@@ -30,7 +30,7 @@ export default async function About({ params }) {
   //     }
   //   });
   // }
-  const movies = await getMovieBySearch(params.id.split("%2B")[0])
+  const movies = await getMovieBySearch("John Wick")
 
   return (
     <>
