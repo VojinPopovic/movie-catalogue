@@ -1,11 +1,18 @@
 "use client";
 
-export default function CommentsModal({ setIsModalOpen }) {
+import Comment from "./Comment";
+import { useState } from "react";
+import { createComment } from "@/libs/createComment";
+
+export default function CommentsModal({ setIsModalOpen, id, session }) {
   function closeModal() {
     setIsModalOpen(false);
   }
 
-  async function makeComment(e) {}
+  function makeComment(e) {
+    e.preventDefault();
+    createComment(e.target[0].value, id, session);
+  }
 
   return (
     <div
@@ -24,17 +31,13 @@ export default function CommentsModal({ setIsModalOpen }) {
               </p>
             </div>
             <form onSubmit={makeComment}>
-              <div className="flex flex-col">
-                <label className="leading-loose text-white">
-                  Post a comment
-                </label>
-                <textarea
-                  type="text"
-                  className="px-4 py-2 w-full sm:text-sm rounded-md text-gray-600"
-                  placeholder="Write something..."
-                />
-              </div>
-              <div className="flex items-center space-x-4">
+              <label className="leading-loose text-white">Post a comment</label>
+              <textarea
+                type="text"
+                className="px-4 py-2 w-full sm:text-sm rounded-md text-gray-600"
+                placeholder="Write something..."
+              />
+              <div className="flex items-center">
                 <button
                   className="my-4 accent_color flex justify-center items-center w-full text-white px-4 py-3 rounded-md"
                   type="submit"
@@ -43,24 +46,20 @@ export default function CommentsModal({ setIsModalOpen }) {
                 </button>
               </div>
             </form>
-            {/* <div>
-              {isLoading ? (
-                <PartialLoading />
-              ) : (
-                data
-                  ?.slice()
-                  .reverse()
-                  .map((postComment) => {
-                    return (
-                      <Comment
-                        key={postComment._id}
-                        post={postComment}
-                        profileEmail={postComment.commentmaker}
-                      />
-                    );
-                  })
-              )}
-            </div> */}
+            <div>
+              {/* {data
+                ?.slice()
+                .reverse()
+                .map((postComment) => {
+                  return (
+                    <Comment
+                      key={postComment._id}
+                      post={postComment}
+                      profileEmail={postComment.commentmaker}
+                    />
+                  );
+                })} */}
+            </div>
           </div>
         </div>
       </div>

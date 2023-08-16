@@ -65,7 +65,15 @@ export default function ReviewCard({ review }) {
           Comments
         </span>
       </button>
-      {isModalOpen ? <CommentsModal setIsModalOpen={setIsModalOpen} /> : ""}
+      {isModalOpen ? (
+        <CommentsModal
+          setIsModalOpen={setIsModalOpen}
+          id={review._id}
+          session={session}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
