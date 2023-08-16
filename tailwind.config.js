@@ -17,24 +17,26 @@ module.exports = {
       },
     },
     screens: {
-      xs: "400px",
-      // => @media (min-width: 300px) { ... }
-      sm: "640px",
-      // => @media (min-width: 640px) { ... }
+      xxs: "250px",
+      // => @media (min-width: 250px) { ... }
 
-      md: "730px",
-      // => @media (min-width: 730px) { ... }
-      content: "1034px",
-      // => @media (min-width: 1034px) { ... }
+      xs: "450px",
+      // => @media (min-width: 400px) { ... }
+
+      sm: "690px",
+      // => @media (min-width: 690px) { ... }
+
+      md: "860px",
+      // => @media (min-width: 860px) { ... }
+
+      content: "1080px",
+      // => @media (min-width: 1080px) { ... }
 
       lg: "1100px",
       // => @media (min-width: 1100px) { ... }
 
       xl: "1280px",
       // => @media (min-width: 1280px) { ... }
-
-      "2xl": "1536px",
-      // => @media (min-width: 1536px) { ... }
     },
   },
   plugins: [],
