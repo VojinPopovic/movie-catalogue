@@ -15,6 +15,7 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
 export default function BasicSlider({ data }) {
   const [contents, setContents] = useState();
+  const encoded = encodeURIComponent("+");
 
   useEffect(() => {
     const content = data?.map((item) => {
@@ -48,7 +49,7 @@ export default function BasicSlider({ data }) {
                 {"Release date: " + formatDate(item.release_date)}
               </p>
               <Link
-                href={`/about/${item.title}+${item.id}`}
+                href={`/about/${item.title}${encoded}${item.id}`}
                 className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px]"
               >
                 About
