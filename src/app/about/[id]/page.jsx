@@ -64,7 +64,7 @@ export default async function About({ params }) {
               Popular movies
             </p>
             <div className="w-full flex justify-center">
-              <div className="grid gap-3 xxs:grid-cols-[250px] xs:grid-cols-[200px_200px] sm:grid-cols-[200px_200px_200px] md:grid-cols-[200px_200px_200px_200px] content:grid-cols-[200px_200px_200px_200px_200px] content:gap-3 mx-auto">
+              <div className="grid gap-3 xxs:grid-cols-[250px] xs:grid-cols-[200px_200px] sm:grid-cols-[200px_200px_200px] md:grid-cols-[200px_200px_200px_200px] content:grid-cols-[200px_200px_200px_200px_200px] content:gap-3 mx-auto pb-10">
                 {popularMovies?.results?.map((item) => {
                   return <MovieCard key={item.id} movie={item} />;
                 })}
