@@ -19,7 +19,7 @@ export default function RenderCards({ dataList }) {
   return (
     <>
       <div className="w-full flex justify-center flex-col">
-        <div className="w-full h-[400px] bg-black max-w-[1034px] mx-auto">
+        <div className="w-full aspect-video bg-black max-w-[1048px] mx-auto">
           <BasicSlider data={dataList.popularity.results}></BasicSlider>
         </div>
         <div className="my-10 flex justify-center">
@@ -35,7 +35,7 @@ export default function RenderCards({ dataList }) {
             <option value="votes">Rating</option>
           </select>
         </div>
-        <div className="grid gap-10 md:grid-cols-[318px_318px] lg:grid-cols-[318px_318px_318px] mx-auto">
+        <div className="grid gap-3 xxs:grid-cols-[250px] xs:grid-cols-[200px_200px] sm:grid-cols-[200px_200px_200px] md:grid-cols-[200px_200px_200px_200px] content:grid-cols-[200px_200px_200px_200px_200px] content:gap-3 mx-auto">
           {content}
         </div>
       </div>

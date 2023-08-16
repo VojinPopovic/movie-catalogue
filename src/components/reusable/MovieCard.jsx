@@ -10,9 +10,9 @@ export default function MovieCard({ movie, dataFilter }) {
   const encoded = encodeURIComponent("+");
   return (
     <>
-      {movie.poster_path !== null && movie.poster_path !== undefined ? (
+      {!(movie.poster_path === null && movie.poster_path === undefined) ? (
         <Tilt>
-          <div className="w-[280px] h-[400px] xs:w-[320px] xs:h-[450px] bg-[#151515] relative rounded-xl overflow-hidden">
+          <div className="w-full h-[350px] xs:w-[200px] xs:h-[300px] bg-[#151515] relative rounded-xl overflow-hidden">
             <div className="w-full h-full overflow-hidden absolute">
               <Image
                 className="w-full h-auto"
@@ -24,7 +24,7 @@ export default function MovieCard({ movie, dataFilter }) {
               ></Image>
             </div>
             <div className="absolute bg-[rgba(0,0,0,0.7)] w-full bottom-0 flex flex-col justify-center text-white pl-6 py-6 gap-2">
-              <p className="text-3xl leading-none">{movie.title}</p>
+              <p className="text-lg leading-none">{movie.title}</p>
               {!(dataFilter === "release" || dataFilter === "votes") ? (
                 <div className="flex w-full gap-2 items-center">
                   <Image src={ImdbIcon} width={30} height={30} alt="" />
@@ -44,7 +44,6 @@ export default function MovieCard({ movie, dataFilter }) {
                 About
               </Link>
             </div>
-            <div className="w-full h-[300px]"></div>
           </div>
         </Tilt>
       ) : (
