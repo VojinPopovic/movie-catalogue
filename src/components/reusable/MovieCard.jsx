@@ -23,8 +23,8 @@ export default function MovieCard({ movie, dataFilter }) {
                 priority
               ></Image>
             </div>
-            <div className="absolute bg-[rgba(0,0,0,0.7)] w-full bottom-0 flex flex-col justify-center text-white pl-6 py-6 gap-2">
-              <p className="text-lg leading-none">{movie.title}</p>
+            <div className="absolute bg-[rgba(0,0,0,0.7)] w-full h-[45%] bottom-0 flex flex-col justify-center text-white pl-6 py-3 gap-2">
+              <p className="text-md leading-none">{movie.title}</p>
               {!(dataFilter === "release" || dataFilter === "votes") ? (
                 <div className="flex w-full gap-2 items-center">
                   <Image src={ImdbIcon} width={30} height={30} alt="" />
@@ -39,7 +39,7 @@ export default function MovieCard({ movie, dataFilter }) {
               )}
               <Link
                 href={`/about/${movie.title}${encoded}${movie.id}`}
-                className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
+                className="bg-[#BA00FC] py-1 px-3 text-white rounded-[10px] max-w-[100px] text-center"
               >
                 About
               </Link>
