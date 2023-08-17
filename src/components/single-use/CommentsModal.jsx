@@ -3,6 +3,7 @@
 import Comment from "./Comment";
 import { useState } from "react";
 import { createComment } from "@/libs/createComment";
+import useSWR from "swr";
 
 export default function CommentsModal({ setIsModalOpen, id, session }) {
   function closeModal() {
@@ -12,6 +13,15 @@ export default function CommentsModal({ setIsModalOpen, id, session }) {
   function makeComment(e) {
     e.preventDefault();
     createComment(e.target[0].value, id, session);
+  }
+
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, isLoading, mutate } = useSWR(`/api/comments?id=${id}`, fetcher);
+  console.log(id)
+  const comments = data?.slice().reverse();
+
+  function reloadData() {
+    mutate();
   }
 
   return (
@@ -47,18 +57,22 @@ export default function CommentsModal({ setIsModalOpen, id, session }) {
               </div>
             </form>
             <div>
-              {/* {data
-                ?.slice()
-                .reverse()
-                .map((postComment) => {
-                  return (
-                    <Comment
-                      key={postComment._id}
-                      post={postComment}
-                      profileEmail={postComment.commentmaker}
-                    />
-                  );
-                })} */}
+              {!isLoading ? (
+                comments
+                  ?.slice()
+                  .reverse()
+                  .map((postComment) => {
+                    return (
+                      <Comment
+                        key={postComment._id}
+                        post={postComment}
+                        profileEmail={postComment.commentmaker}
+                      />
+                    );
+                  })
+              ) : (
+                <p>Loading</p>
+              )}
             </div>
           </div>
         </div>
