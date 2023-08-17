@@ -7,6 +7,7 @@ import Image from "next/image";
 import FallbackImage from "../../../../public/fallbackImage.jpg";
 import GlassCard from "@/components/single-use/GlassCard";
 import MovieCard from "@/components/reusable/MovieCard";
+import WatchListIcon from "@/components/reusable/WatchListIcon";
 
 export default async function About({ params }) {
   const popularMoviesData = getPopularityData();
@@ -41,6 +42,7 @@ export default async function About({ params }) {
             height={1080}
             alt=""
           />
+          <WatchListIcon />
           <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
             <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
               <GlassCard prop={movies.results[0].title} />
