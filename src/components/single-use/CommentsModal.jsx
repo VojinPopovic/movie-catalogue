@@ -1,7 +1,6 @@
 "use client";
 
 import Comment from "./Comment";
-import { useState } from "react";
 import { createComment } from "@/libs/createComment";
 import useSWR from "swr";
 
@@ -10,18 +9,20 @@ export default function CommentsModal({ setIsModalOpen, id, session }) {
     setIsModalOpen(false);
   }
 
-  function makeComment(e) {
-    e.preventDefault();
-    createComment(e.target[0].value, id, session);
-  }
-
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, isLoading, mutate } = useSWR(`/api/comments?id=${id}`, fetcher);
-  console.log(id)
+  console.log(id);
   const comments = data?.slice().reverse();
 
   function reloadData() {
     mutate();
+  }
+
+  function makeComment(e) {
+    e.preventDefault();
+    createComment(e.target[0].value, id, session);
+    reloadData();
+    e.target.reset()
   }
 
   return (
@@ -66,7 +67,8 @@ export default function CommentsModal({ setIsModalOpen, id, session }) {
                       <Comment
                         key={postComment._id}
                         post={postComment}
-                        profileEmail={postComment.commentmaker}
+                        profileEmail={postComment.commentmakeremail}
+                        reloadData={reloadData}
                       />
                     );
                   })
