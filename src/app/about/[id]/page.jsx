@@ -8,20 +8,23 @@ import FallbackImage from "../../../../public/fallbackImage.jpg";
 import GlassCard from "@/components/single-use/GlassCard";
 import MovieCard from "@/components/reusable/MovieCard";
 import WatchListIcon from "@/components/reusable/WatchListIcon";
+import { getWatchListItems } from "@/libs/getWatchListItems";
 
 export default async function About({ params }) {
+  let matchingMovie = "";
   const popularMoviesData = getPopularityData();
   const reviewsData = getReviewsData("moviename", params.id.split("%2B")[0]);
   const moviesData = getMovieBySearch(params.id.split("%2B")[0]);
+  const watchlistData = getWatchListItems(params.id.split("%2B")[1]);
   const movieNameAndId = params.id.split("%2B");
-  let matchingMovie = "";
   let src = "";
   const link = "https://image.tmdb.org/t/p/original";
 
-  const [movies, popularMovies, reviews] = await Promise.all([
+  const [movies, popularMovies, reviews, watchlist] = await Promise.all([
     moviesData,
     popularMoviesData,
     reviewsData,
+    watchlistData,
   ]);
   if (movies) {
     movies.results.forEach((movie) => {
@@ -42,7 +45,7 @@ export default async function About({ params }) {
             height={1080}
             alt=""
           />
-          <WatchListIcon movieid={matchingMovie.id} />
+          <WatchListIcon movieid={matchingMovie.id} watchlist={watchlist} />
           <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
             <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
               <GlassCard prop={movies.results[0].title} />

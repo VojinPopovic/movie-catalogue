@@ -6,7 +6,7 @@ import { postWatchlist } from "@/libs/postWatchListItems";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function WatchListIcon({ movieid }) {
+export default function WatchListIcon({ movieid, watchlist }) {
   const session = useSession();
   const router = useRouter();
 
@@ -20,7 +20,11 @@ export default function WatchListIcon({ movieid }) {
   return (
     <div
       onClick={addToWatchlist}
-      className="absolute top-3 right-3 rounded-full p-3 hover:bg-[rgba(255,255,255,0.3)] cursor-pointer"
+      className={`absolute top-3 right-3 rounded-full p-3 ${
+        !(watchlist.length < 1)
+          ? "bg-[rgba(255,255,255,0.3)]"
+          : "hover:bg-[rgba(255,255,255,0.3)]"
+      } cursor-pointer`}
     >
       <Image src={WatchlistIcon} width={30} height={20} alt=""></Image>
     </div>
