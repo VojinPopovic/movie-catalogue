@@ -15,14 +15,16 @@ export default function CommentsModal({ setIsModalOpen, id, session }) {
   const comments = data?.slice().reverse();
 
   function reloadData() {
-    mutate();
+    setTimeout(() => {
+      mutate();
+    }, "2000");
   }
 
   function makeComment(e) {
     e.preventDefault();
     createComment(e.target[0].value, id, session);
     reloadData();
-    e.target.reset()
+    e.target.reset();
   }
 
   return (
