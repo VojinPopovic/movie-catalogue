@@ -10,11 +10,21 @@ export default function WatchListIcon({ movieid, watchlist }) {
   const session = useSession();
   const router = useRouter();
 
-  function addToWatchlist() {
-    postWatchlist(movieid, session?.data?.user?.email);
-    setTimeout(() => {
+  async function addToWatchlist() {
+    if (watchlist.length < 1) {
+      postWatchlist(movieid, session?.data?.user?.email);
+      setTimeout(() => {
+        router.refresh();
+      }, "2000");
       router.refresh();
-    }, "2000");
+    } else {
+      try {
+        await fetch(`/api/watchlist/${watchlist[0]._id}`, { method: "DELETE" });
+        router.refresh();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   }
 
   return (
