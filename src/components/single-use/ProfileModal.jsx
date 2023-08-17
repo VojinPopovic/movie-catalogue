@@ -17,11 +17,8 @@ export default function ProfileModal({ setIsOpen }) {
       <Link onClick={closeModal} href="/watch-list">
         Watch List
       </Link>
-      <Link onClick={closeModal} href="/profile">
-        Profile
-      </Link>
-      <Link onClick={closeModal} href="/comments">
-        Comments
+      <Link onClick={closeModal} href="/reviews">
+        Reviews
       </Link>
       <li onClick={signOut} className="list-none cursor-pointer">
         Logout
