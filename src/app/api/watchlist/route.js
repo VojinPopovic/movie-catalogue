@@ -4,14 +4,24 @@ import Watchlist from "@/models/Watchlist";
 
 export async function GET(request) {
   const url = new URL(request.url);
+  const useremail = url.searchParams.get("useremail");
   const movieid = url.searchParams.get("movieid");
 
   try {
     await connect();
 
-    const watchlist = await Watchlist.find({ movieid });
-    return new NextResponse(JSON.stringify(watchlist), { status: 200 });
+    let watchlist;
+    if (useremail) {
+      watchlist = await Watchlist.find({ useremail });
+    } else if (movieid) {
+      watchlist = await Watchlist.find({ movieid });
+    } else {
+      return new NextResponse("Invalid parameters", { status: 400 });
+    }
+
+    return new NextResponse(JSON.stringify(reviews), { status: 200 });
   } catch (err) {
+    console.error("Error:", err);
     return new NextResponse("Internal Server Error", { status: 500 });
   }
 }

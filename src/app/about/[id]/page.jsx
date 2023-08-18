@@ -15,7 +15,7 @@ export default async function About({ params }) {
   const popularMoviesData = getPopularityData();
   const reviewsData = getReviewsData("moviename", params.id.split("%2B")[0]);
   const moviesData = getMovieBySearch(params.id.split("%2B")[0]);
-  const watchlistData = getWatchListItems(params.id.split("%2B")[1]);
+  const watchlistData = getWatchListItems("movieid",params.id.split("%2B")[1]);
   const movieNameAndId = params.id.split("%2B");
   let src = "";
   const link = "https://image.tmdb.org/t/p/original";
