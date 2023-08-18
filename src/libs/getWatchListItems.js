@@ -1,7 +1,7 @@
-export async function getWatchListItems(movieid) {
+export async function getWatchListItems(queryType, queryValue) {
   try {
     const data = await fetch(
-      `https://popular-movie-catalogue.vercel.app/api/watchlist?movieid=${movieid}`,
+      `https://popular-movie-catalogue.vercel.app/api/watchlist?${queryType}=${queryValue}`,
       { cache: "no-store" }
     );
     return data.json();

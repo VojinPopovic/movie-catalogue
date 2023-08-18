@@ -4,7 +4,7 @@ import Link from "next/link";
 import SearchIcon from "../../../public/searchIcon.svg";
 import { signOut } from "next-auth/react";
 
-export default function ProfileModal({ setIsOpen }) {
+export default function ProfileModal({ setIsOpen, session }) {
   function closeModal() {
     setIsOpen(false);
   }
@@ -14,7 +14,10 @@ export default function ProfileModal({ setIsOpen }) {
       <Link onClick={closeModal} href="/">
         Home
       </Link>
-      <Link onClick={closeModal} href="/watch-list">
+      <Link
+        onClick={closeModal}
+        href={`/watch-list/${encodeURI(session.data.user.email)}`}
+      >
         Watch List
       </Link>
       <Link onClick={closeModal} href="/reviews">

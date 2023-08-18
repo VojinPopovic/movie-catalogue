@@ -44,7 +44,7 @@ export default function Navbar() {
           )}
         </div>
       </div>
-      {isOpen ? <ProfileModal setIsOpen={setIsOpen} /> : ""}
+      {isOpen ? <ProfileModal setIsOpen={setIsOpen} session={session} /> : ""}
     </>
   );
 }
