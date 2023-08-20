@@ -38,7 +38,7 @@ export default async function About({ params }) {
 
   return (
     <>
-      <div className="text-white max-w-[1034px] mx-auto">
+      <div className="text-white max-w-[1048px] mx-auto">
         <div className="w-full h-full relative">
           <Image
             src={matchingMovie.backdrop_path !== null ? src : FallbackImage}
