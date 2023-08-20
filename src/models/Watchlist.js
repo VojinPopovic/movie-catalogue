@@ -2,9 +2,25 @@ const mongoose = require("mongoose");
 
 const { Schema, model, models } = mongoose;
 
-const watchlistSchema = new Schema(
+const watchlistsSchema = new Schema(
   {
-    movieid: {
+    id: {
+      type: String,
+      required: true,
+    },
+    poster_path: {
+      type: String,
+      required: true,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    release_date: {
+      type: String,
+      required: true,
+    },
+    vote_average: {
       type: String,
       required: true,
     },
@@ -16,5 +32,5 @@ const watchlistSchema = new Schema(
   { timestamps: true }
 );
 
-const Watchlist = models.Watchlist || model("Watchlist", watchlistSchema);
-export default Watchlist;
+const Watchlists = models.Watchlists || model("Watchlists", watchlistsSchema);
+export default Watchlists;
