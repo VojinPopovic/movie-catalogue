@@ -20,7 +20,10 @@ export default function ProfileModal({ setIsOpen, session }) {
       >
         Watch List
       </Link>
-      <Link onClick={closeModal} href="/reviews">
+      <Link
+        onClick={closeModal}
+        href={`/reviews/${encodeURI(session.data.user.email)}`}
+      >
         Reviews
       </Link>
       <li onClick={signOut} className="list-none cursor-pointer">
