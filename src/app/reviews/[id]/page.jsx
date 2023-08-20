@@ -7,7 +7,7 @@ export default async function Reviews({ params }) {
     params.id.replaceAll("%40", "@")
   );
   const content = reviews.map((review) => {
-    return <ReviewCard review={review} />;
+    return <ReviewCard key={review._id} review={review} />;
   });
   return (
     <div className="text-white max-w-[1048px] content:mx-auto pl-3">
