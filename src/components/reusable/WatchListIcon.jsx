@@ -6,13 +6,27 @@ import { postWatchlist } from "@/libs/postWatchListItems";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function WatchListIcon({ movieid, watchlist }) {
+export default function WatchListIcon({
+  id,
+  poster_path,
+  title,
+  release_date,
+  vote_average,
+  watchlist,
+}) {
   const session = useSession();
   const router = useRouter();
 
   async function addToWatchlist() {
     if (watchlist.length < 1) {
-      postWatchlist(movieid, session?.data?.user?.email);
+      postWatchlist(
+        id,
+        poster_path,
+        title,
+        release_date,
+        vote_average,
+        session?.data?.user?.email
+      );
       setTimeout(() => {
         router.refresh();
       }, "2000");

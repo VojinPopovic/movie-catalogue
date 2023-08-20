@@ -15,7 +15,7 @@ export default async function About({ params }) {
   const popularMoviesData = getPopularityData();
   const reviewsData = getReviewsData("moviename", params.id.split("%2B")[0]);
   const moviesData = getMovieBySearch(params.id.split("%2B")[0]);
-  const watchlistData = getWatchListItems("movieid", params.id.split("%2B")[1]);
+  const watchlistData = getWatchListItems("id", params.id.split("%2B")[1]);
   const movieNameAndId = params.id.split("%2B");
   let src = "";
   const link = "https://image.tmdb.org/t/p/original";
@@ -26,7 +26,7 @@ export default async function About({ params }) {
     reviewsData,
     watchlistData,
   ]);
-  console.log(watchlist)
+
   if (movies) {
     movies.results.forEach((movie) => {
       if (movieNameAndId[1] == movie.id) {
@@ -46,7 +46,14 @@ export default async function About({ params }) {
             height={1080}
             alt=""
           />
-          <WatchListIcon movieid={matchingMovie.id} watchlist={watchlist} />
+          <WatchListIcon
+            id={matchingMovie.id}
+            poster_path={matchingMovie.poster_path}
+            title={matchingMovie.title}
+            release_date={matchingMovie.release_date}
+            vote_average={matchingMovie.vote_average}
+            watchlist={watchlist}
+          />
           <div className="h-full sm:h-auto flex justify-center items-center absolute bottom-0 sm:justify-start sm:mb-4 px-3 w-full md:justify-center">
             <div className="grid xs:gap-2 md:gap-5 md:grid-cols-[200px_200px_200px]">
               <GlassCard prop={movies.results[0].title} />

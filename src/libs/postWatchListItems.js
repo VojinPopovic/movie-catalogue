@@ -1,9 +1,20 @@
-export async function postWatchlist(movieid, useremail) {
+export async function postWatchlist(
+  id,
+  poster_path,
+  title,
+  release_date,
+  vote_average,
+  useremail
+) {
   try {
     await fetch(`/api/watchlist`, {
       method: "POST",
       body: JSON.stringify({
-        movieid,
+        id,
+        poster_path,
+        title,
+        release_date,
+        vote_average,
         useremail,
       }),
     });
