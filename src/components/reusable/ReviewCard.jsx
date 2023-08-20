@@ -25,7 +25,7 @@ export default function ReviewCard({ review }) {
   }
 
   return (
-    <div className="relative border-white border-2 rounded-lg p-4 mb-3">
+    <div className="relative text-white border-white border-2 rounded-lg p-4 mb-3">
       <Link href={`/profile/${review.username}`}>
         <div className="flex items-center gap-3">
           <Image
