@@ -9,7 +9,10 @@ export async function getRevenueData() {
   try {
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?sort_by=revenue.desc`,
-      options
+      options,
+      {
+        next: { revalidate: 86400 },
+      }
     );
     return data.json();
   } catch (error) {

@@ -9,7 +9,10 @@ export async function getVoteData() {
   try {
     const data = await fetch(
       `https://api.themoviedb.org/3/discover/movie?sort_by=vote_average.desc`,
-      options
+      options,
+      {
+        next: { revalidate: 86400 },
+      }
     );
     return data.json();
   } catch (error) {
