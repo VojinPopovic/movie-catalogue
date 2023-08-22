@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import LogoIcon from "../../../../public/logoIcon.svg";
 import { signIn } from "next-auth/react";
 import { useSession } from "next-auth/react";
@@ -11,15 +11,6 @@ import ProfileModal from "../ProfileModal";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const session = useSession();
-
-  useEffect(() => {
-    if (isOpen) {
-      document.body.style.overflowY = "hidden";
-    } else {
-      document.body.style.overflowY = "scroll";
-    }
-  }, [isOpen]);
-
 
   return (
     <>
