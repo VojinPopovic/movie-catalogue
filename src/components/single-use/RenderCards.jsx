@@ -29,10 +29,18 @@ export default function RenderCards({ dataList }) {
             className="bg-transparent text-white border border-white rounded-lg px-4 py-2"
             onChange={dataPicker}
           >
-            <option className="main_color" value="popularity">Popularity</option>
-            <option className="main_color" value="revenue">Revenue</option>
-            <option className="main_color" value="release">Release date</option>
-            <option className="main_color" value="votes">Rating</option>
+            <option className="main_color" value="popularity">
+              Popularity
+            </option>
+            <option className="main_color" value="revenue">
+              Revenue
+            </option>
+            <option className="main_color" value="release">
+              Release date
+            </option>
+            <option className="main_color" value="votes">
+              Rating
+            </option>
           </select>
         </div>
         <div className="grid gap-3 xxs:grid-cols-[250px] xs:grid-cols-[200px_200px] sm:grid-cols-[200px_200px_200px] md:grid-cols-[200px_200px_200px_200px] content:grid-cols-[200px_200px_200px_200px_200px] content:gap-3 mx-auto pb-10">
