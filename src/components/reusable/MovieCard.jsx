@@ -10,7 +10,7 @@ export default function MovieCard({ movie, dataFilter }) {
   const encoded = encodeURIComponent("+");
   return (
     <>
-      {!(movie.poster_path === null && movie.poster_path === undefined) ? (
+      {!(movie.poster_path === null || movie.poster_path === undefined) ? (
         <Tilt>
           <div className="w-full h-[350px] xs:w-[200px] xs:h-[300px] bg-[#151515] relative rounded-xl overflow-hidden">
             <div className="w-full h-full overflow-hidden absolute">
