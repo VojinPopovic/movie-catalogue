@@ -10,7 +10,7 @@ export default async function Reviews({ params }) {
     return <ReviewCard key={review._id} review={review} />;
   });
   return (
-    <div className="text-white max-w-[1048px] content:mx-auto pl-3">
+    <div className="text-white max-w-[1048px] content:mx-auto px-4">
       <p className="text-4xl my-5">Reviews</p>
       <div className="w-full max-w-[700px]">{reviews ? content : ""}</div>
     </div>

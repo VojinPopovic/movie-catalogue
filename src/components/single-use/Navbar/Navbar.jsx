@@ -34,10 +34,19 @@ export default function Navbar() {
                 ></Image>
               </div>
             </div>
+          ) : session?.status === "loading" ? (
+            <button
+              onClick={() => signIn("google")}
+              className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
+              disabled={true}
+            >
+              Sign in
+            </button>
           ) : (
             <button
               onClick={() => signIn("google")}
               className="bg-[#BA00FC] py-2 px-6 text-white rounded-[10px] max-w-[120px] text-center"
+              disabled={false}
             >
               Sign in
             </button>
